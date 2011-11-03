@@ -81,6 +81,5 @@ class ItemTest < Test::Unit::TestCase
         assert_equal 'bar', @aws.sign("GET", '/', {'foo' => 'bar'})['foo']
       end
     end
-    
   end
 end

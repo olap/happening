@@ -118,7 +118,6 @@ module Happening
       end
     
     protected
-        
       def needs_to_sign?
         present?(options[:aws_access_key_id])
       end
