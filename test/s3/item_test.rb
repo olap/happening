@@ -132,6 +132,13 @@ class ItemTest < Test::Unit::TestCase
           :aws_secret_access_key => 'secret')
         assert_equal "https://bucket.s3.amazonaws.com:443/the-key", @item.url
       end
+
+      should "provide an expiring_url where requested" do
+        @item = Happening::S3::Item.new('bucket', 'the-key',
+          :aws_access_key_id => '123',
+          :aws_secret_access_key => 'secret')
+        assert_equal "https://bucket.s3.amazonaws.com:443/the-key?AWSAccessKeyId=123&Expires=0&Signature=qENG3EVLigIm2UD2DUosfLuxhsU%3D", @item.expiring_url(@time)
+      end
     end
 
     context "when getting an item" do
