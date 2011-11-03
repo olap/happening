@@ -95,13 +95,17 @@ module Happening
       def url
         URI::Generic.new(options[:protocol], nil, server, port, nil, path(!dns_bucket?), nil, nil, nil).to_s
       end
+
+      def escaped_id
+        "#{CGI::escape(aws_id)}"
+      end
       
       def server
         dns_bucket? ? "#{bucket}.#{options[:server]}" : options[:server]
       end
       
       def path(with_bucket=true)
-        with_bucket ? "/#{bucket}/#{CGI::escape(aws_id)}" : "/#{CGI::escape(aws_id)}"
+        with_bucket ? "/#{bucket}/#{escaped_id}" : "/#{escaped_id}"
       end
     
     protected
