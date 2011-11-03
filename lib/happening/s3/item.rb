@@ -96,6 +96,15 @@ module Happening
         URI::Generic.new(options[:protocol], nil, server, port, nil, path(!dns_bucket?), nil, nil, nil).to_s
       end
 
+      def expiring_url(expires_at = (Time.now + 3600))
+        signature = Happening::S3::Signature::generate_temporary_url_signature(:bucket => bucket,
+                                                                               :resource => aws_id,
+                                                                               :expires_at => expires_at,
+                                                                               :secret_access_key => options[:aws_secret_access_key])
+
+        "#{url}?AWSAccessKeyId=#{options[:aws_access_key_id]}&Expires=#{expires_at.to_i.to_s}&Signature=#{signature}"
+      end
+
       def escaped_id
         "#{CGI::escape(aws_id)}"
       end
