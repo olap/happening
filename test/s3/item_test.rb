@@ -377,6 +377,13 @@ class ItemTest < Test::Unit::TestCase
           end
         end
       end
+
+      should "exist" do
+        stub_request(:head, 'https://bucket.s3.amazonaws.com:443/the-key').
+          to_return(fake_response('hy there')).times(1)
+        @item = Happening::S3::Item.new('bucket', 'the-key')
+        assert @item.exists?
+      end
     end
 
     context "when saving an item" do

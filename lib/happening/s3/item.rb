@@ -116,6 +116,17 @@ module Happening
       def path(with_bucket=true)
         with_bucket ? "/#{bucket}/#{escaped_id}" : "/#{escaped_id}"
       end
+
+      def exists?
+        EM.run do
+          head do
+            EM.stop
+          end
+        end
+        true
+      rescue Happening::Error
+        false
+      end
     
     protected
       def needs_to_sign?
