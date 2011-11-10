@@ -114,7 +114,7 @@ module Happening
       end
       
       def path(with_bucket=true)
-        with_bucket ? "/#{bucket}/#{escaped_id}" : "/#{escaped_id}"
+        with_bucket ? "/#{bucket}/#{aws_id}" : "/#{aws_id}"
       end
 
       def exists?
