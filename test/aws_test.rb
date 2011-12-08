@@ -36,20 +36,32 @@ class ItemTest < Test::Unit::TestCase
           Happening::AWS.set_defaults({
               :aws_access_key_id => 'key',
               :aws_secret_access_key => 'secret',
+              :server => 'server',
               :bucket => 'bucket' })
           assert Happening::AWS.bucket_set?
           assert Happening::AWS.credentials_set?
+          assert Happening::AWS.server_set?
 
           Happening::AWS.set_defaults({
               :aws_access_key_id => 'key',
-              :aws_secret_access_key => 'secret'
+              :aws_secret_access_key => 'secret',
             })
           assert !Happening::AWS.bucket_set?
           assert Happening::AWS.credentials_set?
+          assert !Happening::AWS.server_set?
+
+          Happening::AWS.set_defaults({
+            :server => 'server',
+            :bucket => 'bucket'
+          })
+          assert Happening::AWS.bucket_set?
+          assert !Happening::AWS.credentials_set?
+          assert Happening::AWS.server_set?
           
           Happening::AWS.set_defaults({})
           assert !Happening::AWS.bucket_set?
           assert !Happening::AWS.credentials_set?
+          assert !Happening::AWS.server_set?
         end
       end
 

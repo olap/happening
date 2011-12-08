@@ -33,7 +33,7 @@ module Happening
         
         @options = {
           :timeout => 10,
-          :server => 's3.amazonaws.com',
+          :server => Happening::AWS.defaults[:server] || 's3.amazonaws.com',
           :protocol => 'https',
           :aws_access_key_id => Happening::AWS.defaults[:aws_access_key_id],
           :aws_secret_access_key => Happening::AWS.defaults[:aws_secret_access_key],

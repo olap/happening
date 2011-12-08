@@ -7,7 +7,7 @@ module Happening
     AMAZON_METADATA_PREFIX = 'x-amz-meta-'
     DIGEST = OpenSSL::Digest.new('sha1')
     
-    attr_accessor :aws_access_key_id, :aws_secret_access_key
+    attr_accessor :aws_access_key_id, :aws_secret_access_key, :server
 
     class << self
 
@@ -27,11 +27,15 @@ module Happening
         defaults[:bucket]
       end
 
+      def server_set?
+        defaults[:server]
+      end
     end
     
-    def initialize(aws_access_key_id = nil, aws_secret_access_key = nil)
+    def initialize(aws_access_key_id = nil, aws_secret_access_key = nil, server = nil)
       @aws_access_key_id = aws_access_key_id || Happening::AWS.defaults[:aws_access_key_id]
       @aws_secret_access_key = aws_secret_access_key || Happening::AWS.defaults[:aws_secret_access_key]
+      @server = server || Happening::AWS.defaults[:server]
       raise ArgumentError, "need AWS Access Key Id and AWS Secret Key" if blank?(@aws_access_key_id) || blank?(@aws_secret_access_key)
     end
     
