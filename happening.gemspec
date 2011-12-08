@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{happening}
-  s.version = "0.2.5"
+  s.version = "0.2.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = [%q{Jonathan Weiss}]
-  s.date = %q{2011-08-23}
+  s.authors = [%q{Jonathan Weiss}, %q{Andrew Pollok}]
+  s.date = %q{2011-12-08}
   s.description = %q{An EventMachine based S3 client }
   s.email = %q{jw@innerewut.de}
   s.extra_rdoc_files = [
@@ -37,7 +37,7 @@ Gem::Specification.new do |s|
     "test/s3_test.rb",
     "test/test_helper.rb"
   ]
-  s.homepage = %q{http://github.com/peritor/happening}
+  s.homepage = %q{http://github.com/olap/happening}
   s.licenses = [%q{BSD}]
   s.require_paths = [%q{lib}]
   s.rubygems_version = %q{1.8.7}
@@ -67,4 +67,3 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<mocha>, [">= 0"])
   end
 end
-

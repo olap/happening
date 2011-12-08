@@ -1,6 +1,11 @@
 Changelog
 =============
 
+0.2.6
+- added support for default server enabling s3 details
+- a basic, probably broken papreclip adaptor
+- signature building
+
 0.2.5
 
 - fix building
