@@ -16,7 +16,7 @@ require File.expand_path("./lib/happening")
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "happening"
-  gem.homepage = "http://github.com/peritor/happening"
+  gem.homepage = "http://github.com/olap/happening"
   gem.license = "BSD"
   gem.summary = %Q{An EventMachine based S3 client }
   gem.description = %Q{An EventMachine based S3 client }
